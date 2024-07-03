@@ -16,9 +16,10 @@ permissions:
 jobs:
   steps:
     debug:
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-
       runs-on: ubuntu-latest
-      run: |
-        echo "$GITHUB_CONTEXT"
+      steps:
+        - run: |
+            echo "$GITHUB_CONTEXT"
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+
