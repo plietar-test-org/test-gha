@@ -1,0 +1,23 @@
+name: Continuous benchmarking
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+on:
+  issue_comment:
+    types: ['created', 'edited']
+
+permissions:
+  contents: read
+  statuses: write
+  pull-requests: write
+
+jobs:
+  debug:
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+
+    runs-on: ubuntu-latest
+    run: |
+      echo "$GITHUB_CONTEXT"
