@@ -14,12 +14,11 @@ permissions:
   pull-requests: write
 
 jobs:
-  steps:
-    debug:
-      runs-on: ubuntu-latest
-      steps:
-        - run: |
-            echo "$GITHUB_CONTEXT"
-          env:
-            GITHUB_CONTEXT: ${{ toJson(github) }}
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
 
